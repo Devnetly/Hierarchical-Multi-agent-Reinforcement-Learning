@@ -48,7 +48,7 @@ public class PuzzleAgent : Agent
         // Add reward if door is opening
         if (doorAnim.GetBool("Opening"))
         {
-            AddReward(0.5f);
+            AddReward(0.0001f);
         }
     }
 

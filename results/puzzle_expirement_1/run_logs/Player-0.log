@@ -2,11 +2,11 @@ The selected window backend is x11
 Mono path[0] = '/home/phues/Hierarchical-Multi-agent-Reinforcement-Learning/build/puzzle_Data/Managed'
 Mono config path = '/home/phues/Hierarchical-Multi-agent-Reinforcement-Learning/build/puzzle_Data/MonoBleedingEdge/etc'
 Found 1 interfaces on host : 0) 192.168.1.39
-Player connection [138932969648000]  Target information:
+Player connection [129142521896832]  Target information:
 
-Player connection [138932969648000]  * "[IP] 192.168.1.39 [Port] 55000 [Flags] 2 [Guid] 1474592502 [EditorId] 2312805902 [Version] 1048832 [Id] LinuxPlayer(13,192.168.1.39) [Debug] 0 [PackageName] LinuxPlayer [ProjectName] Environment" 
+Player connection [129142521896832]  * "[IP] 192.168.1.39 [Port] 55000 [Flags] 2 [Guid] 360021218 [EditorId] 3019964205 [Version] 1048832 [Id] LinuxPlayer(13,192.168.1.39) [Debug] 0 [PackageName] LinuxPlayer [ProjectName] Environment" 
 
-Player connection [138932969648000] Started UDP target info broadcast (1) on [225.0.0.222:54997].
+Player connection [129142521896832] Started UDP target info broadcast (1) on [225.0.0.222:54997].
 
 Display 0 '0': 1920x1080 (primary device).
 [Physics::Module] Initialized fallback backend.
@@ -66,10 +66,10 @@ GfxDevice: creating device client; kGfxThreadingModeClientWorkerNativeJobs
 [Vulkan init] extensions: name=VK_KHR_xlib_surface [enabled=1, external=0]
 [Vulkan init] extensions: name=VK_LUNARG_direct_driver_loading [enabled=0, external=0]
 [Vulkan init] SelectPhysicalDevice requestedDeviceIndex=-1 xrDevice=(nil)
-[Vulkan init] Physical Device 0x9962230 [0]: "Intel(R) UHD Graphics (CML GT2)" deviceType=1 vendorID=8086 deviceID=9bc4
-[Vulkan init] Physical Device 0x9962200 [1]: "NVIDIA GeForce GTX 1650" deviceType=2 vendorID=10de deviceID=1f99
-[Vulkan init] Physical Device 0x99621d0 [2]: "llvmpipe (LLVM 17.0.6, 256 bits)" deviceType=4 vendorID=10005 deviceID=0
-[Vulkan init] Selected physical device 0x9962200
+[Vulkan init] Physical Device 0x37209250 [0]: "Intel(R) UHD Graphics (CML GT2)" deviceType=1 vendorID=8086 deviceID=9bc4
+[Vulkan init] Physical Device 0x37209220 [1]: "NVIDIA GeForce GTX 1650" deviceType=2 vendorID=10de deviceID=1f99
+[Vulkan init] Physical Device 0x372091f0 [2]: "llvmpipe (LLVM 17.0.6, 256 bits)" deviceType=4 vendorID=10005 deviceID=0
+[Vulkan init] Selected physical device 0x37209220
 [Vulkan init] Graphics queue count=1
 [Vulkan init] extensions: count=204
 [Vulkan init] extensions: name=VK_AMD_buffer_marker [enabled=0, external=0]
@@ -282,11 +282,11 @@ Vulkan renderer=[NVIDIA GeForce GTX 1650] id=[1f99]
 Vulkan device type 2
 Vulkan driverversion=[550.480.0 (0x899e0000)] uint=[-1986134016]
 Vulkan driverLibraryString=[NVIDIA (4), 550.120]
-Vulkan PSO: cache data not found [path=/tmp/DefaultCompany/Environment/vulkan_pso_cache.bin]
+Vulkan PSO: Cache data successfully loaded [size=965765,path=/tmp/DefaultCompany/Environment/vulkan_pso_cache.bin]
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory is not a mono symbol file
-- Loaded All Assemblies, in  0.163 seconds
-- Finished resetting the current domain, in  0.003 seconds
+- Loaded All Assemblies, in  0.084 seconds
+- Finished resetting the current domain, in  0.002 seconds
 [Physics::Module] Selected backend.
 [Physics::Module] Name: PhysX
 [Physics::Module] Id: 0xf2b8ea05
@@ -297,7 +297,7 @@ requesting resize 84 x 84
 resizing window to 84 x 84
 Desktop is 1920 x 1080 @ 144 Hz
 InitializeOrResetSwapChain 84x84 hdr=0 samples=1
-UnloadTime: 0.441242 ms
+UnloadTime: 0.463552 ms
 Registered Communicator in Agent.
 UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
 UnityEngine.StackTraceUtility:ExtractStackTrace () (at /home/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:37)
@@ -329,3 +329,21 @@ requesting resize 84 x 84
 resizing window to 84 x 84
 Desktop is 1920 x 1080 @ 144 Hz
 InitializeOrResetSwapChain 84x84 hdr=0 samples=1
+Unable to save timers to file /home/phues/Hierarchical-Multi-agent-Reinforcement-Learning/build/puzzle_Data/ML-Agents/Timers/CaptureTheFlag_timers.json
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /home/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+Unity.MLAgents.TimerStack:SaveJsonTimers (string) (at ./Library/PackageCache/com.unity.ml-agents/Runtime/Timer.cs:513)
+Unity.MLAgents.Academy:Dispose () (at ./Library/PackageCache/com.unity.ml-agents/Runtime/Academy.cs:673)
+UnityEngine.Application:Internal_ApplicationQuit () (at /home/bokken/build/output/unity/unity/Runtime/Export/Application/Application.cs:365)
+
+(Filename: ./Library/PackageCache/com.unity.ml-agents/Runtime/Timer.cs Line: 513)
+
+[Physics::Module] Cleanup current backned.
+[Physics::Module] Id: 0xf2b8ea05
+Vulkan PSO: data extracted [new size=965765, old size=965765, incomplete=0]
+Vulkan PSO: Pipeline cache has not changed skipping save handle[36db7c20]
+PlayerConnection::Cleanup##utp:{"type":"MemoryLeaks","version":2,"phase":"Immediate","time":1736531625894,"processId":24787,"allocatedMemory":17384484,"memoryLabels":[{"Default":136},{"NewDelete":15872},{"Thread":1792},{"Manager":536142},{"GfxDevice":9244},{"Serialization":416},{"JobScheduler":32768},{"String":342},{"DynamicArray":3076},{"HashMap":3584},{"Utility":736},{"PoolAlloc":720},{"VR":1760},{"NativeArray":16777680},{"Subsystems":96},{"CoreBusinessMetrics":120}]}
