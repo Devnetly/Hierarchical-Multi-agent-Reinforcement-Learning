@@ -23,7 +23,7 @@ public class EnvController : MonoBehaviour
     public Camera cam;
     private int resetTimer;
     public int MaxEnvironmentSteps = 50000;
-    private SimpleMultiAgentGroup agentGroup;
+    public SimpleMultiAgentGroup agentGroup;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

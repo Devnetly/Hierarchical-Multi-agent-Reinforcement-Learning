@@ -5,6 +5,8 @@ public class OpenDoor : MonoBehaviour
     public GameObject door;
     private Animator anim;
 
+    public bool isPressed = false;
+
 
     void Start()
     {
@@ -16,6 +18,7 @@ public class OpenDoor : MonoBehaviour
         if(other.tag == "Agent")
         {
             anim.SetBool("Opening", true);
+            isPressed = true;
         }
     }
 
@@ -24,6 +27,7 @@ public class OpenDoor : MonoBehaviour
         if(other.tag == "Agent")
         {
             anim.SetBool("Opening", false);
+            isPressed = false;
         }
     }
 }

@@ -18,6 +18,8 @@ public class DetectTrigger : MonoBehaviour
     public TriggerEvent flagTriggerEnterEvent = new TriggerEvent();
     public TriggerEvent cpTriggerEnterEvent = new TriggerEvent();
 
+    public TriggerEvent doorTriggerExitEvent = new TriggerEvent();
+
     private void OnTriggerEnter(Collider col)
     {
         if (col.CompareTag(tagToDetect))
@@ -31,6 +33,14 @@ public class DetectTrigger : MonoBehaviour
             {
                 flagTriggerEnterEvent.Invoke(m_col, reward);
             }
+        }
+    }
+
+    private void OnTriggerExit(Collider col)
+    {
+        if (col.CompareTag(tagToDetect))
+        {
+            doorTriggerExitEvent.Invoke(col, reward);
         }
     }
 
