@@ -668,7 +668,7 @@ Transform:
   m_GameObject: {fileID: 2556336797430943332}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.25, y: -1.8800001, z: -50.9}
+  m_LocalPosition: {x: -5.25, y: -1.8800001, z: -56.31}
   m_LocalScale: {x: 48.80109, y: 2.7474, z: 1.959}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1116,7 +1116,7 @@ MonoBehaviour:
     StartingRot: {x: 0, y: 0, z: 0, w: 0}
     Rb: {fileID: 0}
   cam: {fileID: 0}
-  MaxEnvironmentSteps: 25000
+  MaxEnvironmentSteps: 50000
 --- !u!1 &7103911551683752176
 GameObject:
   m_ObjectHideFlags: 0

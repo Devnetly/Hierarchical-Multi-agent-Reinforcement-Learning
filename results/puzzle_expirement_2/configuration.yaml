@@ -50,7 +50,7 @@ behaviors:
     init_path: null
     keep_checkpoints: 5
     even_checkpoints: false
-    max_steps: 20000000
+    max_steps: 25000000
     time_horizon: 64
     summary_freq: 60000
     threaded: false
@@ -81,7 +81,7 @@ checkpoint_settings:
   run_id: puzzle_expirement_2
   initialize_from: null
   load_model: false
-  resume: false
+  resume: true
   force: false
   train_model: false
   inference: false

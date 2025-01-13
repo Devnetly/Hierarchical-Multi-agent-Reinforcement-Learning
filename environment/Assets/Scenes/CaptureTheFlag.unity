@@ -872,6 +872,18 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 222149138}
+    - target: {fileID: 3641280938423280021, guid: 0967224ba901cf0b7a5e43bb7db9ab28, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 11.037689
+      objectReference: {fileID: 0}
+    - target: {fileID: 3641280938423280021, guid: 0967224ba901cf0b7a5e43bb7db9ab28, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.3705401
+      objectReference: {fileID: 0}
+    - target: {fileID: 3641280938423280021, guid: 0967224ba901cf0b7a5e43bb7db9ab28, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -9.44
+      objectReference: {fileID: 0}
     - target: {fileID: 6315040697647257252, guid: 0967224ba901cf0b7a5e43bb7db9ab28, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

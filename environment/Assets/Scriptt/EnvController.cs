@@ -95,6 +95,7 @@ public class EnvController : MonoBehaviour
         }
         if (allFound)
         {
+            Debug.Log("All agents found checkpoint");
             cpCol.gameObject.SetActive(false);
             agentGroup.AddGroupReward(reward);
         }
