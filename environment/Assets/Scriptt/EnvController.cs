@@ -24,8 +24,6 @@ public class EnvController : MonoBehaviour
     }
 
     public List<AgentInfo> agents = new List<AgentInfo>();
-
-    public Camera cam;
     private int resetTimer;
     public int MaxEnvironmentSteps = 50000;
     public SimpleMultiAgentGroup agentGroup;
@@ -104,10 +102,7 @@ public class EnvController : MonoBehaviour
 
     void Update()
     {
-        //camera follows the first agent only on z axis
-        Vector3 camPos = cam.transform.position;
-        camPos.z = agents[0].agent.transform.position.z - 10;
-        cam.transform.position = camPos;
+        
     }
 
     private void ResetScene()
