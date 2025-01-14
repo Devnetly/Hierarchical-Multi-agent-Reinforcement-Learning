@@ -16,6 +16,11 @@ public class EnvController : MonoBehaviour
         public Quaternion StartingRot;
         [HideInInspector]
         public Rigidbody Rb;
+
+        [HideInInspector]
+        public float distanceToPlate0;
+        [HideInInspector]
+        public float distanceToPlate1;
     }
 
     public List<AgentInfo> agents = new List<AgentInfo>();
@@ -24,6 +29,9 @@ public class EnvController : MonoBehaviour
     private int resetTimer;
     public int MaxEnvironmentSteps = 50000;
     public SimpleMultiAgentGroup agentGroup;
+
+    private GameObject block;
+    private Vector3 blockStartingPos;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -37,6 +45,17 @@ public class EnvController : MonoBehaviour
             agent.Rb = agent.agent.GetComponent<Rigidbody>();
             agentGroup.RegisterAgent(agent.agent);
         }
+
+        //get the block child object
+        block = transform.Find("Block").gameObject;
+        if (block != null)
+        {
+            blockStartingPos = block.transform.position;
+        }
+        else
+        {
+            Debug.LogError("Block not found in the environment hierarchy.");
+        }
     }
 
     void FixedUpdate()
@@ -48,8 +67,39 @@ public class EnvController : MonoBehaviour
             ResetScene();
         }
 
+        for (int i = 0; i < agents.Count; i++)
+        {
+            agents[i].distanceToPlate0 = Vector3.Distance(agents[i].agent.transform.position, agents[i].agent.pressurePlates[0].transform.position);
+            agents[i].distanceToPlate1 = Vector3.Distance(agents[i].agent.transform.position, agents[i].agent.pressurePlates[1].transform.position);
+
+            //if agent on either plate add a reward
+            if (agents[i].distanceToPlate0 < 2.25f || agents[i].distanceToPlate1 < 2.25f)
+            {
+                agents[i].agent.AddReward(1 / MaxEnvironmentSteps);
+            }
+
+            //if agent left the room add a reward
+            if (agents[i].agent.thisAgentLeft)
+            {
+                agents[i].agent.AddReward(0.5f / MaxEnvironmentSteps);
+            }
+
+            //if the other agent is still in the same room while the current agent is on the plate
+            if (!agents[1 - i].agent.thisAgentLeft && agents[i].distanceToPlate0 < 2.25f)
+            {
+                agentGroup.AddGroupReward(-4 / MaxEnvironmentSteps);
+                Debug.Log("Other agent still in the room");
+            }
+            else if (agents[1 - i].agent.thisAgentLeft && !agents[i].agent.thisAgentLeft) //if other agent left and this one is still in the room
+            {
+                agentGroup.AddGroupReward(-4 / MaxEnvironmentSteps);
+                agents[i].agent.AddReward(-1 / MaxEnvironmentSteps);
+                Debug.Log("Other agent left the room and this one is still in the room");
+            }
+        }
+
         //Hurry Up Penalty
-        agentGroup.AddGroupReward(-0.5f / MaxEnvironmentSteps);
+        agentGroup.AddGroupReward(-0.25f / MaxEnvironmentSteps);
     }
 
     void Update()
@@ -69,6 +119,18 @@ public class EnvController : MonoBehaviour
             agent.agent.transform.rotation = agent.StartingRot;
             agent.Rb.linearVelocity = Vector3.zero;
             agent.Rb.angularVelocity = Vector3.zero;
+        }
+
+        //reset block position
+        if (block != null)
+        {
+            block.transform.position = blockStartingPos;
+            Rigidbody blockRb = block.GetComponent<Rigidbody>();
+            if (blockRb != null)
+            {
+                blockRb.linearVelocity = Vector3.zero;
+                blockRb.angularVelocity = Vector3.zero;
+            }
         }
     }
 

@@ -4,4 +4,6 @@
 
 `pip install mlagents_envs==1.1.0`
 
-`mlagents-learn config/puzzle_config1.yaml --env=build/puzzle --run-id=puzzle_expirement_3 --torch-device=cuda --resume`
+`mlagents-learn config/puzzle_config1.yaml --env=build/puzzle --run-id=puzzle_expirement_6 --torch-device=cuda`
+
+you can cancel the training at any time and resume it with `mlagents-learn config/puzzle_config1.yaml --env=build/puzzle --run-id=puzzle_expirement_6 --torch-device=cuda --resume`

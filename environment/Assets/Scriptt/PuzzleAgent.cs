@@ -11,7 +11,6 @@ public class PuzzleAgent : Agent
     public GameObject[] pressurePlates;
 
     private Rigidbody rBody;
-    private Animator doorAnim; // Reference to the door's animator
 
     public float moveSpeed = 10f;
 
@@ -19,26 +18,33 @@ public class PuzzleAgent : Agent
 
     public bool FoundCheckpoint = false;
 
-    public bool otherAgentLeft = false, thisAgentLeft = false;
-
-    public EnvController envController;
+    public bool thisAgentLeft = false;
 
     protected override void Awake()
     {
         base.Awake();
-       // MaxStep = 0;
+        // MaxStep = 0;
         initialPosition = transform.localPosition;
     }
 
     public override void Initialize()
     {
         rBody = GetComponent<Rigidbody>();
-        doorAnim = GameObject.FindGameObjectWithTag("door").GetComponent<Animator>();
-        pressurePlates = GameObject.FindGameObjectsWithTag("plate");
-        pressurePlates = pressurePlates.OrderBy(plate => plate.name).ToArray();
-        envController = GetComponentInParent<EnvController>();
+
+        //get the parent object of the agent
+        Transform parent = transform.parent;
+        pressurePlates = parent.GetComponentsInChildren<Transform>()
+                        .Where(child => child.CompareTag("plate"))
+                        .Select(child => child.gameObject)
+                        .OrderBy(plate => plate.name)
+                        .ToArray();
+        if (pressurePlates.Length < 2)
+        {
+            Debug.LogError("Not enough pressure plates found!");
+            return;
+        }
     }
-      
+
 
     public override void OnEpisodeBegin()
     {
@@ -48,7 +54,7 @@ public class PuzzleAgent : Agent
     }
 
     public override void CollectObservations(VectorSensor sensor)
-    {      
+    {
         sensor.AddObservation(pressurePlates[0].GetComponent<OpenDoor>().isPressed);
         sensor.AddObservation(pressurePlates[1].GetComponent<OpenDoor>().isPressed);
     }
@@ -56,29 +62,7 @@ public class PuzzleAgent : Agent
     public override void OnActionReceived(ActionBuffers actionBuffers)
     {
         MoveAgent(actionBuffers.DiscreteActions);
-        float distanceToPlate0 = Vector3.Distance(transform.position, pressurePlates[0].transform.position);
-        float distanceToPlate1 = Vector3.Distance(transform.position, pressurePlates[1].transform.position);
-
-        //if agent on either plate add a reward
-        if (distanceToPlate0 < 2.25f || distanceToPlate1 < 2.25f)
-        {
-            AddReward(1f/envController.MaxEnvironmentSteps);
-            Debug.Log("adding reward");
-        }
-
-        //if the other agent is still in the same room while the current agent is on the plate
-        if(!otherAgentLeft && distanceToPlate0 < 2.25f)
-        {
-            envController.agentGroup.AddGroupReward(-8f/envController.MaxEnvironmentSteps);
-            Debug.Log("adding reward1");
-        }
-        else if(!thisAgentLeft && otherAgentLeft) //if the other agent has left the room while the current agent hasnt
-        {
-            AddReward(-4f/envController.MaxEnvironmentSteps);
-            Debug.Log("adding reward2");
-        }
     }
-
     public void MoveAgent(ActionSegment<int> act)
     {
         var dirToGo = Vector3.zero;
@@ -135,11 +119,7 @@ public class PuzzleAgent : Agent
 
     public void LeftFirstStage(Collider col, float reward)
     {
-        if(col.gameObject.GetComponent<PuzzleAgent>() != this)
-        {
-            otherAgentLeft = true;
-        }
-        else if(col.gameObject.GetComponent<PuzzleAgent>() == this)
+        if (col.gameObject.GetComponent<PuzzleAgent>() == this)
         {
             thisAgentLeft = true;
         }
