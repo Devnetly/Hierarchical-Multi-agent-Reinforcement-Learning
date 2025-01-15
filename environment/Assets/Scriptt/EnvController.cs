@@ -73,7 +73,7 @@ public class EnvController : MonoBehaviour
             //if agent on either plate add a reward
             if (agents[i].distanceToPlate0 < 2.25f || agents[i].distanceToPlate1 < 2.25f)
             {
-                agents[i].agent.AddReward(1 / MaxEnvironmentSteps);
+                agents[i].agent.AddReward(0.25f / MaxEnvironmentSteps);
             }
 
             //if agent left the room add a reward
@@ -82,22 +82,24 @@ public class EnvController : MonoBehaviour
                 agents[i].agent.AddReward(0.5f / MaxEnvironmentSteps);
             }
 
-            //if the other agent is still in the same room while the current agent is on the plate
-            if (!agents[1 - i].agent.thisAgentLeft && agents[i].distanceToPlate0 < 2.25f)
+
+            //if the other agent is still in the first room while the current agent is on the plate
+            if (!agents[1 - i].agent.thisAgentLeft && (agents[i].distanceToPlate0 < 2.25f || agents[i].distanceToPlate1 < 2.25f))
             {
-                agentGroup.AddGroupReward(-4 / MaxEnvironmentSteps);
-                Debug.Log("Other agent still in the room");
-            }
-            else if (agents[1 - i].agent.thisAgentLeft && !agents[i].agent.thisAgentLeft) //if other agent left and this one is still in the room
-            {
-                agentGroup.AddGroupReward(-4 / MaxEnvironmentSteps);
-                agents[i].agent.AddReward(-1 / MaxEnvironmentSteps);
-                Debug.Log("Other agent left the room and this one is still in the room");
+                agentGroup.AddGroupReward(-2 / MaxEnvironmentSteps);
+                agents[1-i].agent.AddReward(-0.5f / MaxEnvironmentSteps);
+                Debug.Log("Other agent still in the room while this agent is on the plate");
             }
         }
 
+        if(agents[0].agent.thisAgentLeft && agents[1].agent.thisAgentLeft)
+        {
+            agentGroup.AddGroupReward(0.5f / MaxEnvironmentSteps);
+            Debug.Log("Both agents left the room");
+        }
+
         //Hurry Up Penalty
-        agentGroup.AddGroupReward(-0.25f / MaxEnvironmentSteps);
+        agentGroup.AddGroupReward(-0.5f / MaxEnvironmentSteps);
     }
 
     void Update()

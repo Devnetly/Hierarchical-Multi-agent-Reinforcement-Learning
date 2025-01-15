@@ -124,4 +124,12 @@ public class PuzzleAgent : Agent
             thisAgentLeft = true;
         }
     }
+
+    public void EnteredFirstStage(Collider col, float reward)
+    {
+        if (col.gameObject.GetComponent<PuzzleAgent>() == this)
+        {
+            thisAgentLeft = false;
+        }
+    }
 }

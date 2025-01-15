@@ -760,7 +760,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  doorTriggerExitEvent:
+  firstStageTriggerExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  firstStageTriggerEnterEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!65 &7356808441364884070
@@ -784,6 +787,190 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &2929590969332043738
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8919191177950073579}
+  - component: {fileID: 4812117552636367031}
+  - component: {fileID: 6881176727555902600}
+  - component: {fileID: 1186283971135011309}
+  - component: {fileID: 2820573903977036453}
+  m_Layer: 0
+  m_Name: FirstStageArea
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8919191177950073579
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2929590969332043738}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.37, y: -1.45, z: -74.59}
+  m_LocalScale: {x: 48, y: 1.7705, z: 28}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6315040697647257252}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &4812117552636367031
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2929590969332043738}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &6881176727555902600
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2929590969332043738}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1186283971135011309
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2929590969332043738}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2820573903977036453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2929590969332043738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2960e81ae6f421f49a4e5e9cf6eb834e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagToDetect: Agent
+  reward: 1
+  isCheckpoint: 0
+  flagTriggerEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  cpTriggerEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  firstStageTriggerExitEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 411743899475181522}
+        m_TargetAssemblyTypeName: PuzzleAgent, Assembly-CSharp
+        m_MethodName: LeftFirstStage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 9166067334491866929}
+        m_TargetAssemblyTypeName: PuzzleAgent, Assembly-CSharp
+        m_MethodName: LeftFirstStage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  firstStageTriggerEnterEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 411743899475181522}
+        m_TargetAssemblyTypeName: PuzzleAgent, Assembly-CSharp
+        m_MethodName: EnteredFirstStage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 9166067334491866929}
+        m_TargetAssemblyTypeName: PuzzleAgent, Assembly-CSharp
+        m_MethodName: EnteredFirstStage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4795975917428851939
 GameObject:
   m_ObjectHideFlags: 0
@@ -911,7 +1098,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3641280938423280021
 Transform:
   m_ObjectHideFlags: 0
@@ -1001,33 +1188,12 @@ MonoBehaviour:
   cpTriggerEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  doorTriggerExitEvent:
+  firstStageTriggerExitEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 411743899475181522}
-        m_TargetAssemblyTypeName: PuzzleAgent, Assembly-CSharp
-        m_MethodName: LeftFirstStage
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 9166067334491866929}
-        m_TargetAssemblyTypeName: PuzzleAgent, Assembly-CSharp
-        m_MethodName: LeftFirstStage
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+  firstStageTriggerEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!65 &3815229951368602203
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1092,6 +1258,7 @@ Transform:
   - {fileID: 8695678977682501626}
   - {fileID: 2579862769908941288}
   - {fileID: 4226245025476190834}
+  - {fileID: 8919191177950073579}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2637371484067160696
@@ -1111,11 +1278,14 @@ MonoBehaviour:
     StartingPos: {x: 0, y: 0, z: 0}
     StartingRot: {x: 0, y: 0, z: 0, w: 0}
     Rb: {fileID: 0}
+    distanceToPlate0: 0
+    distanceToPlate1: 0
   - agent: {fileID: 9166067334491866929}
     StartingPos: {x: 0, y: 0, z: 0}
     StartingRot: {x: 0, y: 0, z: 0, w: 0}
     Rb: {fileID: 0}
-  cam: {fileID: 0}
+    distanceToPlate0: 0
+    distanceToPlate1: 0
   MaxEnvironmentSteps: 50000
 --- !u!1 &7103911551683752176
 GameObject:
@@ -1728,7 +1898,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3185820772025156237, guid: 630db099312f17e92ac5e6792527a5b6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -73.3
+      value: -79
       objectReference: {fileID: 0}
     - target: {fileID: 3185820772025156237, guid: 630db099312f17e92ac5e6792527a5b6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1805,11 +1975,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4799945341950807739, guid: 03a9cd3f82983eda5ace22ddeaff2000, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -24.09
+      value: -24.23
       objectReference: {fileID: 0}
     - target: {fileID: 4799945341950807739, guid: 03a9cd3f82983eda5ace22ddeaff2000, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.3399999
+      value: 1.11
       objectReference: {fileID: 0}
     - target: {fileID: 4799945341950807739, guid: 03a9cd3f82983eda5ace22ddeaff2000, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1844,8 +2014,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7831306362006510089, guid: 03a9cd3f82983eda5ace22ddeaff2000, type: 3}
+      propertyPath: m_Mass
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 7831306362006510089, guid: 03a9cd3f82983eda5ace22ddeaff2000, type: 3}
       propertyPath: m_Constraints
-      value: 84
+      value: 80
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1964,7 +2138,10 @@ MonoBehaviour:
   cpTriggerEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  doorTriggerExitEvent:
+  firstStageTriggerExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  firstStageTriggerEnterEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!65 &5809702275638556331
@@ -2018,7 +2195,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3185820772025156237, guid: 630db099312f17e92ac5e6792527a5b6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -48.65
+      value: -40
       objectReference: {fileID: 0}
     - target: {fileID: 3185820772025156237, guid: 630db099312f17e92ac5e6792527a5b6, type: 3}
       propertyPath: m_LocalRotation.w
