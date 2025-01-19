@@ -30,6 +30,7 @@ public class EnvController : MonoBehaviour
 
     private GameObject block;
     private Vector3 blockStartingPos;
+    private Quaternion blockStartingRot;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -49,6 +50,7 @@ public class EnvController : MonoBehaviour
         if (block != null)
         {
             blockStartingPos = block.transform.position;
+            blockStartingRot = block.transform.rotation;
         }
         else
         {
@@ -90,6 +92,12 @@ public class EnvController : MonoBehaviour
                 agents[1-i].agent.AddReward(-0.5f / MaxEnvironmentSteps);
                 Debug.Log("Other agent still in the room while this agent is on the plate");
             }
+            else if (agents[1 - i].agent.thisAgentLeft && !agents[i].agent.thisAgentLeft) //if other agent left and this one is still in the room
+            {
+                agentGroup.AddGroupReward(-4 / MaxEnvironmentSteps);
+                agents[i].agent.AddReward(-1 / MaxEnvironmentSteps);
+                Debug.Log("Other agent left the room and this one is still in the room");
+            }
         }
 
         if(agents[0].agent.thisAgentLeft && agents[1].agent.thisAgentLeft)
@@ -99,7 +107,7 @@ public class EnvController : MonoBehaviour
         }
 
         //Hurry Up Penalty
-        agentGroup.AddGroupReward(-0.5f / MaxEnvironmentSteps);
+        agentGroup.AddGroupReward(-0.25f / MaxEnvironmentSteps);
     }
 
     void Update()
@@ -122,6 +130,7 @@ public class EnvController : MonoBehaviour
         if (block != null)
         {
             block.transform.position = blockStartingPos;
+            block.transform.rotation = blockStartingRot;
             Rigidbody blockRb = block.GetComponent<Rigidbody>();
             if (blockRb != null)
             {
