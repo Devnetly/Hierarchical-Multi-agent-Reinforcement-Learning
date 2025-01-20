@@ -668,7 +668,7 @@ Transform:
   m_GameObject: {fileID: 2556336797430943332}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.25, y: -1.8800001, z: -56.31}
+  m_LocalPosition: {x: -5.25, y: -1.8800001, z: -52.1}
   m_LocalScale: {x: 48.80109, y: 2.7474, z: 1.959}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1423,8 +1423,8 @@ Transform:
   m_GameObject: {fileID: 7783136068505595726}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.4, y: 0.089999914, z: -20.599998}
-  m_LocalScale: {x: 49.04208, y: 5, z: 1}
+  m_LocalPosition: {x: -0.62, y: 0.089999914, z: -20.599998}
+  m_LocalScale: {x: 39.5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6315040697647257252}
@@ -1644,6 +1644,10 @@ PrefabInstance:
       propertyPath: 'm_DetectableTags.Array.data[5]'
       value: checkpoint
       objectReference: {fileID: 0}
+    - target: {fileID: 4825113615677332158, guid: bad35da003b3852f398800628db3453e, type: 3}
+      propertyPath: moveSpeed
+      value: 1.4
+      objectReference: {fileID: 0}
     - target: {fileID: 6072823580763739163, guid: bad35da003b3852f398800628db3453e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.1
@@ -1842,6 +1846,10 @@ PrefabInstance:
     - target: {fileID: 3375981231553148377, guid: bad35da003b3852f398800628db3453e, type: 3}
       propertyPath: 'm_DetectableTags.Array.data[5]'
       value: checkpoint
+      objectReference: {fileID: 0}
+    - target: {fileID: 4825113615677332158, guid: bad35da003b3852f398800628db3453e, type: 3}
+      propertyPath: moveSpeed
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 6072823580763739163, guid: bad35da003b3852f398800628db3453e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2047,7 +2055,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3851280473781331144, guid: 03a9cd3f82983eda5ace22ddeaff2000, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4799945341950807739, guid: 03a9cd3f82983eda5ace22ddeaff2000, type: 3}
       propertyPath: m_LocalPosition.x

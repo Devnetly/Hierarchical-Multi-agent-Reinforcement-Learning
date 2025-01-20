@@ -28,9 +28,12 @@ public class EnvController : MonoBehaviour
     public int MaxEnvironmentSteps = 50000;
     public SimpleMultiAgentGroup agentGroup;
 
-    private GameObject block;
+    private GameObject block, checkPoint;
     private Vector3 blockStartingPos;
     private Quaternion blockStartingRot;
+
+    [Range(0, 50)]
+    public float checkPointOffset = 0;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -57,8 +60,16 @@ public class EnvController : MonoBehaviour
             Debug.LogError("Block not found in the environment hierarchy.");
         }
 
-        Debug.Log("Length of agents is "+agents.Count);
-        Debug.Log("Length of pressure plates is "+agents[0].agent.pressurePlates.Length + " and " + agents[1].agent.pressurePlates.Length);
+        //get the checkpoint child object
+        checkPoint = transform.Find("checkpoint").gameObject;
+        if (checkPoint != null)
+        {
+            checkPoint.transform.position += Vector3.forward * Academy.Instance.EnvironmentParameters.GetWithDefault("checkPointOffset", checkPointOffset); 
+        }
+        else
+        {
+            Debug.LogError("CheckPoint not found in the environment hierarchy.");
+        }
     }
 
     void FixedUpdate()
