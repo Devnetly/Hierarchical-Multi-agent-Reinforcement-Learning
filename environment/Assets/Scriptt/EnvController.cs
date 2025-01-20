@@ -56,6 +56,9 @@ public class EnvController : MonoBehaviour
         {
             Debug.LogError("Block not found in the environment hierarchy.");
         }
+
+        Debug.Log("Length of agents is "+agents.Count);
+        Debug.Log("Length of pressure plates is "+agents[0].agent.pressurePlates.Length + " and " + agents[1].agent.pressurePlates.Length);
     }
 
     void FixedUpdate()
@@ -124,6 +127,8 @@ public class EnvController : MonoBehaviour
             agent.agent.transform.rotation = agent.StartingRot;
             agent.Rb.linearVelocity = Vector3.zero;
             agent.Rb.angularVelocity = Vector3.zero;
+            agent.agent.thisAgentLeft = false;
+            agent.agent.FoundCheckpoint = false;
         }
 
         //reset block position
@@ -164,8 +169,9 @@ public class EnvController : MonoBehaviour
         if (allFound)
         {
             Debug.Log("All agents found checkpoint");
-            cpCol.gameObject.SetActive(false);
             agentGroup.AddGroupReward(reward);
+            agentGroup.EndGroupEpisode();
+            ResetScene();
         }
     }
 }

@@ -11,6 +11,7 @@ public class PuzzleAgent : Agent
     public GameObject[] pressurePlates;
 
     private Rigidbody rBody;
+    private VectorSensorComponent goalSensor;
 
     public float moveSpeed = 10f;
 
@@ -30,6 +31,7 @@ public class PuzzleAgent : Agent
     public override void Initialize()
     {
         rBody = GetComponent<Rigidbody>();
+        goalSensor = GetComponent<VectorSensorComponent>();
 
         //get the parent object of the agent
         Transform parent = transform.parent;
@@ -57,6 +59,7 @@ public class PuzzleAgent : Agent
     {
         sensor.AddObservation(pressurePlates[0].GetComponent<OpenDoor>().isPressed);
         sensor.AddObservation(pressurePlates[1].GetComponent<OpenDoor>().isPressed);
+        goalSensor.GetSensor().AddObservation(FoundCheckpoint);
     }
 
     public override void OnActionReceived(ActionBuffers actionBuffers)
