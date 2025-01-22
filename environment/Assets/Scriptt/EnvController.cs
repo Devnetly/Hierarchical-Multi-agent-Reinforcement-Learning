@@ -28,12 +28,10 @@ public class EnvController : MonoBehaviour
     public int MaxEnvironmentSteps = 50000;
     public SimpleMultiAgentGroup agentGroup;
 
-    private GameObject block, checkPoint;
+    private GameObject block;
     private Vector3 blockStartingPos;
     private Quaternion blockStartingRot;
 
-    [Range(0, 50)]
-    public float checkPointOffset = 0;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -58,17 +56,6 @@ public class EnvController : MonoBehaviour
         else
         {
             Debug.LogError("Block not found in the environment hierarchy.");
-        }
-
-        //get the checkpoint child object
-        checkPoint = transform.Find("checkpoint").gameObject;
-        if (checkPoint != null)
-        {
-            checkPoint.transform.position += Vector3.forward * Academy.Instance.EnvironmentParameters.GetWithDefault("checkPointOffset", checkPointOffset); 
-        }
-        else
-        {
-            Debug.LogError("CheckPoint not found in the environment hierarchy.");
         }
     }
 
@@ -104,20 +91,20 @@ public class EnvController : MonoBehaviour
             {
                 agentGroup.AddGroupReward(-2 / MaxEnvironmentSteps);
                 agents[1-i].agent.AddReward(-0.5f / MaxEnvironmentSteps);
-                Debug.Log("Other agent still in the room while this agent is on the plate");
+               // Debug.Log("Other agent still in the room while this agent is on the plate");
             }
             else if (agents[1 - i].agent.thisAgentLeft && !agents[i].agent.thisAgentLeft) //if other agent left and this one is still in the room
             {
                 agentGroup.AddGroupReward(-4 / MaxEnvironmentSteps);
                 agents[i].agent.AddReward(-1 / MaxEnvironmentSteps);
-                Debug.Log("Other agent left the room and this one is still in the room");
+              //  Debug.Log("Other agent left the room and this one is still in the room");
             }
         }
 
         if(agents[0].agent.thisAgentLeft && agents[1].agent.thisAgentLeft)
         {
             agentGroup.AddGroupReward(0.5f / MaxEnvironmentSteps);
-            Debug.Log("Both agents left the room");
+        //    Debug.Log("Both agents left the room");
         }
 
         //Hurry Up Penalty
@@ -184,5 +171,11 @@ public class EnvController : MonoBehaviour
             agentGroup.EndGroupEpisode();
             ResetScene();
         }
+    }
+
+    public void PushingBlock(Collision col)
+    {
+       // Debug.Log("Pushing Block");
+        col.gameObject.GetComponent<PuzzleAgent>().AddReward(0.25f / MaxEnvironmentSteps);
     }
 }
