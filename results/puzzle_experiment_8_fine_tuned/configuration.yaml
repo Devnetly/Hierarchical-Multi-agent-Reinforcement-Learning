@@ -39,7 +39,7 @@ behaviors:
     even_checkpoints: false
     max_steps: 50000000
     time_horizon: 64
-    summary_freq: 60000
+    summary_freq: 100000
     threaded: false
     self_play: null
     behavioral_cloning: null
