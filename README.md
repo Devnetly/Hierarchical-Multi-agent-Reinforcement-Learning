@@ -54,7 +54,7 @@ Agents posses 6 Raycast Sensors to observe the following tags: Other Agents, Wal
 - Agents recieve an existence punishment of `-0.25/max_environment_steps` each step of the ongoing episode.
 - If an agent is still in the same room while the other agent is stepping on the plate they recieve a penalty of `-2/max_environment_steps` each step of the ongoing episode.
 - If an agent left through the door while the other agent is still in the first room they recieve a penalty of `-4/max_environment_steps` each step of the ongoing episode.
-- If both agents leave they recieve a reward of `-4/max_environment_steps` each step of the ongoing episode. 
+- If both agents leave they recieve a reward of `0.5/max_environment_steps` each step of the ongoing episode. 
 - If both agents find the checkpoint they recieve a reward of 2 and the episode is ended.
 
 
