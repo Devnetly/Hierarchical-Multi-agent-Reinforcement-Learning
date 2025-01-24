@@ -17,7 +17,7 @@ The environment consists of two main tasks:
    - The second agent steps and stays on the other pressure plate outside the door, allowing the first agent to cross.
 
 3. **Completion**
-The task is completed when both agents successfully navigate the puzzle and reach the goal area
+The episode is ended when both agents successfully navigate the puzzle and reach the goal area or when agents have taken 100000 steps.
 
 ## Features
 
@@ -26,6 +26,37 @@ The task is completed when both agents successfully navigate the puzzle and reac
 - **Sequential Problem-Solving**: Agents must alternate roles to complete the puzzle.
 
 ![Environment Completion](docs/environment.jpg)
+
+## Observation Space
+
+Agents posses 6 Raycast Sensors to observe the following tags: Other Agents, Walls, Box, Pressure plates, Door, Checkpoint. As well as vector observations that contain the state of pressure plate (pressed or not) and wether or not the agent has found the checkpoint.
+
+## Action Space
+
+1 discrete action branch with 7 actions, corresponding to:
+
+- Do nothing.
+
+- Move forward.
+
+- Move backward.
+
+- Move Left.
+
+- Move right.
+
+- Rotate clockwise.
+
+- Rotate counterclockwise.
+
+## Reward function
+
+- Agents recieve an existence punishment of `-0.25/max_environment_steps` each step of the ongoing episode.
+- If an agent is still in the same room while the other agent is stepping on the plate they recieve a penalty of `-2/max_environment_steps` each step of the ongoing episode.
+- If an agent left through the door while the other agent is still in the first room they recieve a penalty of `-4/max_environment_steps` each step of the ongoing episode.
+- If both agents leave they recieve a reward of `-4/max_environment_steps` each step of the ongoing episode. 
+- If both agents find the checkpoint they recieve a reward of 2 and the episode is ended.
+
 
 
 ## Requirements
@@ -45,9 +76,12 @@ conda create -n mlagents python=3.10.12 && conda activate mlagents
 
 3. Install the unity ML-Agents python package:
 
-`pip install mlagents==1.1.0`
-
-`pip install mlagents_envs==1.1.0`
+```
+pip install mlagents==1.1.0
+```
+```
+pip install mlagents_envs==1.1.0
+```
 
 ## Training
 
