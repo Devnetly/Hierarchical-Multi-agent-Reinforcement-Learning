@@ -4,7 +4,7 @@ This Unity project features a hierarchical cooperative multi-agent environment w
 
 ## Overview
 
-![Environment Screenshot](docs/environment0.png)
+![Environment Screenshot](docs/environment0.jpg)
 
 The environment consists of two main tasks:
 1. **Collaborative Box Pushing**  
@@ -25,7 +25,7 @@ The task is completed when both agents successfully navigate the puzzle and reac
 - **Dynamic Environment**: The door opens only when a pressure plate is pressed.
 - **Sequential Problem-Solving**: Agents must alternate roles to complete the puzzle.
 
-![Environment Completion](docs/environment.png)
+![Environment Completion](docs/environment.jpg)
 
 
 ## Requirements
