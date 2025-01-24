@@ -39,7 +39,9 @@ The task is completed when both agents successfully navigate the puzzle and reac
 
 2. Create a new python virtual environment:
 
-`conda create -n mlagents python=3.10.12 && conda activate mlagents`
+```
+conda create -n mlagents python=3.10.12 && conda activate mlagents
+```
 
 3. Install the unity ML-Agents python package:
 
@@ -51,14 +53,21 @@ The task is completed when both agents successfully navigate the puzzle and reac
 
 - You can start training with the following command (you can add `--torch-device=cuda` if you have a cuda gpu):
 
-`mlagents-learn config/<config>.yaml --env=build/puzzle --run-id=<run_id>`
+```
+mlagents-learn config/<config>.yaml --env=build/puzzle --run-id=<run_id>
+```
 
 - You can also cancel the training at any time and resume it with:
- `mlagents-learn config/<config>.yaml --env=build/puzzle --run-id=<run_id> --resume`
+```
+ mlagents-learn config/<config>.yaml --env=build/puzzle --run-id=<run_id> --resume
+```
 
 ## Inference
 
-- To see how well your agents trained you can run this commands: 
-``mlagents-learn config/<config>.yaml --env=build/puzzle --run-id=<run_id> --resume``
+- To see how well your agents trained you can run this command: 
+
+```
+mlagents-learn config/<config>.yaml --env=build/puzzle --run-id=<run_id> --resume --inference
+```
 
 - Alternatively you can see our already pretrained model by running `puzzle.x86_64` if you are on Linux or `Envrionment.exe` if you are on Windows (lacated at `demo_build` folder).
