@@ -80,20 +80,20 @@ public class EnvController : MonoBehaviour
             }
 
             //if agent left the room add a reward
-            if (agents[i].agent.thisAgentLeft)
+            if (agents[i].agent.ThisAgentLeft)
             {
                 agents[i].agent.AddReward(0.5f / MaxEnvironmentSteps);
             }
 
 
             //if the other agent is still in the first room while the current agent is on the plate
-            if (!agents[1 - i].agent.thisAgentLeft && (agents[i].distanceToPlate0 < 2.25f || agents[i].distanceToPlate1 < 2.25f))
+            if (!agents[1 - i].agent.ThisAgentLeft && (agents[i].distanceToPlate0 < 2.25f || agents[i].distanceToPlate1 < 2.25f))
             {
                 agentGroup.AddGroupReward(-2 / MaxEnvironmentSteps);
                 agents[1-i].agent.AddReward(-0.5f / MaxEnvironmentSteps);
                // Debug.Log("Other agent still in the room while this agent is on the plate");
             }
-            else if (agents[1 - i].agent.thisAgentLeft && !agents[i].agent.thisAgentLeft) //if other agent left and this one is still in the room
+            else if (agents[1 - i].agent.ThisAgentLeft && !agents[i].agent.ThisAgentLeft) //if other agent left and this one is still in the room
             {
                 agentGroup.AddGroupReward(-4 / MaxEnvironmentSteps);
                 agents[i].agent.AddReward(-1 / MaxEnvironmentSteps);
@@ -101,7 +101,7 @@ public class EnvController : MonoBehaviour
             }
         }
 
-        if(agents[0].agent.thisAgentLeft && agents[1].agent.thisAgentLeft)
+        if(agents[0].agent.ThisAgentLeft && agents[1].agent.ThisAgentLeft)
         {
             agentGroup.AddGroupReward(0.5f / MaxEnvironmentSteps);
         //    Debug.Log("Both agents left the room");
@@ -125,7 +125,7 @@ public class EnvController : MonoBehaviour
             agent.agent.transform.rotation = agent.StartingRot;
             agent.Rb.linearVelocity = Vector3.zero;
             agent.Rb.angularVelocity = Vector3.zero;
-            agent.agent.thisAgentLeft = false;
+            agent.agent.ThisAgentLeft = false;
             agent.agent.FoundCheckpoint = false;
         }
 
@@ -141,15 +141,6 @@ public class EnvController : MonoBehaviour
                 blockRb.angularVelocity = Vector3.zero;
             }
         }
-    }
-
-    public void FoundFlag(Collider col, float reward) 
-    {
-        Debug.Log("Flag Found");
-        col.gameObject.SetActive(false);
-        agentGroup.AddGroupReward(reward);
-        agentGroup.EndGroupEpisode();
-        ResetScene();
     }
 
     public void FoundCheckpoint(Collider cpCol, float reward)

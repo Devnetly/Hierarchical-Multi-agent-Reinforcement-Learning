@@ -3,19 +3,20 @@ using UnityEngine.Events;
 
 public class DetectTrigger : MonoBehaviour
 {
-    public string tagToDetect = "agent"; 
+    [SerializeField]
+    private string tagToDetect = "Agent"; 
 
-    public float reward = 1;
+    [SerializeField]
+    private float reward = 1;
 
-    public bool isCheckpoint = false;
+    [SerializeField]
+    private bool isCheckpoint = false;
 
     private Collider m_col;
     [System.Serializable]
     public class TriggerEvent : UnityEvent<Collider, float>
     {
     }
-
-    public TriggerEvent flagTriggerEnterEvent = new TriggerEvent();
     public TriggerEvent cpTriggerEnterEvent = new TriggerEvent();
 
     public TriggerEvent firstStageTriggerExitEvent = new TriggerEvent();
@@ -29,10 +30,6 @@ public class DetectTrigger : MonoBehaviour
             {
                 col.gameObject.GetComponent<PuzzleAgent>().FoundCheckpoint = true;
                 cpTriggerEnterEvent.Invoke(m_col, reward);
-            }
-            else
-            {
-                flagTriggerEnterEvent.Invoke(m_col, reward);
             }
             firstStageTriggerEnterEvent.Invoke(col, reward);
         }

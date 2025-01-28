@@ -12,14 +12,10 @@ public class GUIManager : MonoBehaviour
 
     // Speed multipliers
     [SerializeField] private float speedUpMultiplier = 2f;
-    [SerializeField] private float speedDownMultiplier = 0.5f;
+
 
     // Reference to the speed display text
     [SerializeField] private Text speedDisplayText;
-
-    // Speed levels for organized tracking
-    private int currentSpeedLevel = 1;
-    private readonly int[] speedLevels = { 1, 2, 4, 8, 16 }; // Predefined speed levels
 
     // Current time scale tracking
     private float currentTimeScale;

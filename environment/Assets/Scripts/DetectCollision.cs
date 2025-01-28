@@ -3,7 +3,8 @@ using UnityEngine.Events;
 
 public class DetectCollision : MonoBehaviour
 {
-    public string tagToDetect = "Agent"; 
+    [SerializeField]
+    private string tagToDetect = "Agent"; 
 
     [System.Serializable]
     public class CollisionEvent : UnityEvent<Collision>

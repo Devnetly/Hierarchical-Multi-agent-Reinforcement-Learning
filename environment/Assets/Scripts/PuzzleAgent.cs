@@ -8,18 +8,23 @@ using Unity.VisualScripting;
 
 public class PuzzleAgent : Agent
 {
+    [HideInInspector]
     public GameObject[] pressurePlates;
 
     private Rigidbody rBody;
     private VectorSensorComponent goalSensor;
 
-    public float moveSpeed = 10f;
+    [SerializeField]
+    private float moveSpeed = 10f;
 
     private Vector3 initialPosition;
 
+    [HideInInspector]
     public bool FoundCheckpoint = false;
 
-    public bool thisAgentLeft = false;
+
+    [HideInInspector]
+    public bool ThisAgentLeft = false;
 
     protected override void Awake()
     {
@@ -124,7 +129,7 @@ public class PuzzleAgent : Agent
     {
         if (col.gameObject.GetComponent<PuzzleAgent>() == this)
         {
-            thisAgentLeft = true;
+            ThisAgentLeft = true;
         }
     }
 
@@ -132,7 +137,7 @@ public class PuzzleAgent : Agent
     {
         if (col.gameObject.GetComponent<PuzzleAgent>() == this)
         {
-            thisAgentLeft = false;
+            ThisAgentLeft = false;
         }
     }
 }
