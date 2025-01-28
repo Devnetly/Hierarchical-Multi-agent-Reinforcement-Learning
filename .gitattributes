@@ -1,4 +1,5 @@
 * text=auto
+*.aspx -linguist-detectable
 
 # Unity files
 *.meta -text -merge=unityamlmerge
